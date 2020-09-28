@@ -1,15 +1,15 @@
 ﻿{
   "CognitiveServicesKeys": {
-    "Url": "https://YOURLOCATION.api.cognitive.microsoft.com/vision/v1.0",
-    "Vision": "your service key"
+    "Url": "https://eastus.api.cognitive.microsoft.com/vision/v1.0",
+    "Vision": "31bf99c7e1bf42f890846235a1a61b70"
   },
   "AzureStorage": {
-    "ConnectionString": "DefaultEndpointsProtocol=https;AccountName=XXXXX;AccountKey=XXXXX;EndpointSuffix=core.windows.net",
+    "ConnectionString": "DefaultEndpointsProtocol=https;AccountName=maximesamuel;AccountKey=bsDv84/roO0bXiOVNzr3i++z5/2is1aKs1famSnYB9ktH7v1vtfAeaF+Zux/8FcZ2xfk1xVJdU45cQsgetAVIQ==;EndpointSuffix=core.windows.net",
     "BlobContainer": "images"
   },
   "CosmosDB": {
-    "EndpointURI": "https://XXXXX.documents.azure.com:443/",
-    "Key": "your cosmos db key",
+    "EndpointURI": "https://2020-09-28-mscosmos.documents.azure.com:443/",
+    "Key": "cuXCQNqsLmse6w7dNd8sIg5HePO2oOipRrQ8OGXwRmwFNmXwymOidl74TUZANhAZvJvZhRuj12PfF64PwMqz6g==",
     "DatabaseName": "images",
     "CollectionName": "metadata"
   }
