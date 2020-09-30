@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PictureBot", "PictureBot.csproj", "{3E368FFC-DE99-47F1-89DE-6689F7612209}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PictureBot", "PictureBot.csproj", "{3E368FFC-DE99-47F1-89DE-6689F7612209}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PictureBotDL", "..\..\..\..\Lab9-ConsoleDL\PictureBotDL\PictureBotDL.csproj", "{93912F25-E919-460D-AB11-8333ACE19323}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{3E368FFC-DE99-47F1-89DE-6689F7612209}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E368FFC-DE99-47F1-89DE-6689F7612209}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E368FFC-DE99-47F1-89DE-6689F7612209}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93912F25-E919-460D-AB11-8333ACE19323}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93912F25-E919-460D-AB11-8333ACE19323}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93912F25-E919-460D-AB11-8333ACE19323}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93912F25-E919-460D-AB11-8333ACE19323}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

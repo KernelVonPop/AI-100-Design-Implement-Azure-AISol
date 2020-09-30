@@ -21,7 +21,7 @@ namespace PictureBot.Responses
         {
             // Add a response for the user if Regex or LUIS doesn't know
             // What the user is trying to communicate
-            await context.SendActivityAsync($"I'm not understand you.");
+            await context.SendActivityAsync($"I don't understand you.");
         }
         public static async Task ReplyWithLuisScore(ITurnContext context, string key, double score)
         {

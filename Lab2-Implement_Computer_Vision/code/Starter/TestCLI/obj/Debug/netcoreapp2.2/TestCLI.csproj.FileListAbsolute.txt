@@ -10,7 +10,6 @@ C:\Git\AI-100-Design-Implement-Azure-AISol\Lab2-Implement_Computer_Vision\code\S
 C:\Git\AI-100-Design-Implement-Azure-AISol\Lab2-Implement_Computer_Vision\code\Starter\TestCLI\bin\Debug\netcoreapp2.2\ImageStorageLibrary.pdb
 C:\Git\AI-100-Design-Implement-Azure-AISol\Lab2-Implement_Computer_Vision\code\Starter\TestCLI\bin\Debug\netcoreapp2.2\ProcessingLibrary.pdb
 C:\Git\AI-100-Design-Implement-Azure-AISol\Lab2-Implement_Computer_Vision\code\Starter\TestCLI\obj\Debug\netcoreapp2.2\TestCLI.csprojAssemblyReference.cache
-C:\Git\AI-100-Design-Implement-Azure-AISol\Lab2-Implement_Computer_Vision\code\Starter\TestCLI\obj\Debug\netcoreapp2.2\TestCLI.csproj.CoreCompileInputs.cache
 C:\Git\AI-100-Design-Implement-Azure-AISol\Lab2-Implement_Computer_Vision\code\Starter\TestCLI\obj\Debug\netcoreapp2.2\TestCLI.AssemblyInfoInputs.cache
 C:\Git\AI-100-Design-Implement-Azure-AISol\Lab2-Implement_Computer_Vision\code\Starter\TestCLI\obj\Debug\netcoreapp2.2\TestCLI.AssemblyInfo.cs
 C:\Git\AI-100-Design-Implement-Azure-AISol\Lab2-Implement_Computer_Vision\code\Starter\TestCLI\obj\Debug\netcoreapp2.2\TestCLI.csproj.CopyComplete

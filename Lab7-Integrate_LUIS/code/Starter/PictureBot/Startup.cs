@@ -23,6 +23,10 @@ using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Logging;
 using Microsoft.PictureBot;
 
+using Microsoft.Azure.CognitiveServices.Language.TextAnalytics;
+using Microsoft.Azure.CognitiveServices.Language.TextAnalytics.Models;
+using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime;
+
 namespace PictureBot
 {
     public class Startup
@@ -135,6 +139,41 @@ namespace PictureBot
                 };
 
                 return accessors;
+            });
+
+            // Create and register a LUIS recognizer.
+            services.AddSingleton(sp =>
+            {
+                var luisAppId = Configuration.GetSection("luisAppId")?.Value;
+                var luisAppKey = Configuration.GetSection("luisAppKey")?.Value;
+                var luisEndPoint = Configuration.GetSection("luisEndPoint")?.Value;
+
+                // Get LUIS information
+                var luisApp = new LuisApplication(luisAppId, luisAppKey, luisEndPoint);
+
+                // Specify LUIS options. These may vary for your bot.
+                var luisPredictionOptions = new LuisPredictionOptions
+                {
+                    IncludeAllIntents = true,
+                };
+
+                // Create the recognizer
+                var recognizer = new LuisRecognizer(luisApp, luisPredictionOptions, true, null);
+                return recognizer;
+            });
+
+            services.AddSingleton(sp =>
+            {
+                string cogsBaseUrl = Configuration.GetSection("cogsBaseUrl")?.Value;
+                string cogsKey = Configuration.GetSection("cogsKey")?.Value;
+
+                var credentials = new ApiKeyServiceClientCredentials(cogsKey);
+                TextAnalyticsClient client = new TextAnalyticsClient(credentials)
+                {
+                    Endpoint = cogsBaseUrl
+                };
+
+                return client;
             });
         }
 

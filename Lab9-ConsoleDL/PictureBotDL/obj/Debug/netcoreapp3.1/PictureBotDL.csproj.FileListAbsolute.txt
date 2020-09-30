@@ -1,0 +1,15 @@
+C:\Git\AI-100-Design-Implement-Azure-AISol\Lab9-ConsoleDL\PictureBotDL\bin\Debug\netcoreapp3.1\PictureBotDL.exe
+C:\Git\AI-100-Design-Implement-Azure-AISol\Lab9-ConsoleDL\PictureBotDL\obj\Debug\netcoreapp3.1\PictureBotDL.csprojAssemblyReference.cache
+C:\Git\AI-100-Design-Implement-Azure-AISol\Lab9-ConsoleDL\PictureBotDL\obj\Debug\netcoreapp3.1\PictureBotDL.AssemblyInfoInputs.cache
+C:\Git\AI-100-Design-Implement-Azure-AISol\Lab9-ConsoleDL\PictureBotDL\obj\Debug\netcoreapp3.1\PictureBotDL.AssemblyInfo.cs
+C:\Git\AI-100-Design-Implement-Azure-AISol\Lab9-ConsoleDL\PictureBotDL\bin\Debug\netcoreapp3.1\Microsoft.Bot.Connector.DirectLine.dll
+C:\Git\AI-100-Design-Implement-Azure-AISol\Lab9-ConsoleDL\PictureBotDL\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Git\AI-100-Design-Implement-Azure-AISol\Lab9-ConsoleDL\PictureBotDL\obj\Debug\netcoreapp3.1\PictureBotDL.csproj.CopyComplete
+C:\Git\AI-100-Design-Implement-Azure-AISol\Lab9-ConsoleDL\PictureBotDL\bin\Debug\netcoreapp3.1\PictureBotDL.deps.json
+C:\Git\AI-100-Design-Implement-Azure-AISol\Lab9-ConsoleDL\PictureBotDL\bin\Debug\netcoreapp3.1\PictureBotDL.runtimeconfig.json
+C:\Git\AI-100-Design-Implement-Azure-AISol\Lab9-ConsoleDL\PictureBotDL\bin\Debug\netcoreapp3.1\PictureBotDL.runtimeconfig.dev.json
+C:\Git\AI-100-Design-Implement-Azure-AISol\Lab9-ConsoleDL\PictureBotDL\bin\Debug\netcoreapp3.1\PictureBotDL.dll
+C:\Git\AI-100-Design-Implement-Azure-AISol\Lab9-ConsoleDL\PictureBotDL\bin\Debug\netcoreapp3.1\PictureBotDL.pdb
+C:\Git\AI-100-Design-Implement-Azure-AISol\Lab9-ConsoleDL\PictureBotDL\bin\Debug\netcoreapp3.1\Microsoft.Rest.ClientRuntime.dll
+C:\Git\AI-100-Design-Implement-Azure-AISol\Lab9-ConsoleDL\PictureBotDL\obj\Debug\netcoreapp3.1\PictureBotDL.dll
+C:\Git\AI-100-Design-Implement-Azure-AISol\Lab9-ConsoleDL\PictureBotDL\obj\Debug\netcoreapp3.1\PictureBotDL.pdb

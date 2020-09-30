@@ -21,15 +21,19 @@ using Newtonsoft.Json.Linq;
 using Microsoft.PictureBot;
 using System.Collections.Generic;
 
+using Microsoft.Azure.CognitiveServices.Language.TextAnalytics;
+using Microsoft.Azure.CognitiveServices.Language.TextAnalytics.Models;
+
 namespace PictureBot.Bots
 {
     public class PictureBot : ActivityHandler
     {
         private readonly PictureBotAccessors _accessors;
         // Initialize LUIS Recognizer
-
+        private LuisRecognizer _recognizer { get; } = null;
         private readonly ILogger _logger;
         private DialogSet _dialogs;
+        private TextAnalyticsClient _textAnalyticsClient;
 
         /// <summary>
         /// Every conversation turn for our PictureBot will call this method.
@@ -53,6 +57,19 @@ namespace PictureBot.Bots
                 state.UtteranceList.Add(utterance);
                 await _accessors.ConversationState.SaveChangesAsync(turnContext);
 
+                //Check the language
+                var result = _textAnalyticsClient.DetectLanguage(turnContext.Activity.Text, "us");
+
+                switch (result.DetectedLanguages[0].Name)
+                {
+                    case "English":
+                        break;
+                    default:
+                        // Throw error
+                        await turnContext.SendActivityAsync($"I'm sorry, I can only understand English.   [{result.DetectedLanguages[0].Name}]");
+                        return;
+                }
+
                 // Establish dialog context from the conversation state.
                 var dc = await _dialogs.CreateContextAsync(turnContext);
                 // Continue any current dialog.
@@ -68,7 +85,7 @@ namespace PictureBot.Bots
             }
         }
 
-        public PictureBot(PictureBotAccessors accessors, ILoggerFactory loggerFactory /*, LuisRecognizer recognizer*/)
+        public PictureBot(PictureBotAccessors accessors, ILoggerFactory loggerFactory , LuisRecognizer recognizer, TextAnalyticsClient analyticsClient)
         {
             if (loggerFactory == null)
             {
@@ -76,10 +93,11 @@ namespace PictureBot.Bots
             }
 
             // Add instance of LUIS Recognizer
-
+            _recognizer = recognizer ?? throw new ArgumentNullException(nameof(recognizer));
             _logger = loggerFactory.CreateLogger<PictureBot>();
             _logger.LogTrace("PictureBot turn start.");
             _accessors = accessors ?? throw new System.ArgumentNullException(nameof(accessors));
+            _textAnalyticsClient = analyticsClient;
 
             // The DialogSet needs a DialogState accessor, it will call it when it has a turn context.
             _dialogs = new DialogSet(_accessors.DialogStateAccessor);
@@ -175,7 +193,43 @@ namespace PictureBot.Bots
                     return await stepContext.EndDialogAsync();
                 default:
                     {
-                        await MainResponses.ReplyWithConfused(stepContext.Context);
+                        // Call LUIS recognizer
+                        var result = await _recognizer.RecognizeAsync(stepContext.Context, cancellationToken);
+                        // Get the top intent from the results
+                        var topIntent = result?.GetTopScoringIntent();
+                        // Based on the intent, switch the conversation, similar concept as with Regex above
+                        switch ((topIntent != null) ? topIntent.Value.intent : null)
+                        {
+                            case null:
+                                // Add app logic when there is no result.
+                                await MainResponses.ReplyWithConfused(stepContext.Context);
+                                break;
+                            case "None":
+                                await MainResponses.ReplyWithConfused(stepContext.Context);
+                                // with each statement, we're adding the LuisScore, purely to test, so we know whether LUIS was called or not
+                                await MainResponses.ReplyWithLuisScore(stepContext.Context, topIntent.Value.intent, topIntent.Value.score);
+                                break;
+                            case "Greeting":
+                                await MainResponses.ReplyWithGreeting(stepContext.Context);
+                                await MainResponses.ReplyWithHelp(stepContext.Context);
+                                await MainResponses.ReplyWithLuisScore(stepContext.Context, topIntent.Value.intent, topIntent.Value.score);
+                                break;
+                            case "OrderPic":
+                                await MainResponses.ReplyWithOrderConfirmation(stepContext.Context);
+                                await MainResponses.ReplyWithLuisScore(stepContext.Context, topIntent.Value.intent, topIntent.Value.score);
+                                break;
+                            case "SharePic":
+                                await MainResponses.ReplyWithShareConfirmation(stepContext.Context);
+                                await MainResponses.ReplyWithLuisScore(stepContext.Context, topIntent.Value.intent, topIntent.Value.score);
+                                break;
+                            case "SearchPic":
+                                await MainResponses.ReplyWithSearchConfirmation(stepContext.Context);
+                                await MainResponses.ReplyWithLuisScore(stepContext.Context, topIntent.Value.intent, topIntent.Value.score);
+                                break;
+                            default:
+                                await MainResponses.ReplyWithConfused(stepContext.Context);
+                                break;
+                        }
                         return await stepContext.EndDialogAsync();
                     }
             }
